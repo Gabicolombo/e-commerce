@@ -9,7 +9,7 @@ import { EncryptMiddleware } from '../middleware/encrypt';
 @Module({
   imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }])],
   controllers: [UsersController],
-  providers: [UsersService, UserRepository],
+  providers: [UsersService, UserRepository, EncryptMiddleware],
 })
 export class UsersModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

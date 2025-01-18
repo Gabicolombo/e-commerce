@@ -16,4 +16,14 @@ export class UsersService {
 
     return this.userRepo.createUser(userDto);
   }
+
+  async login(user: User): Promise<boolean> {
+    const { password, email } = user;
+
+    const userExist = await this.userRepo.getUser(email, password);
+
+    if (!userExist) return false;
+
+    return true;
+  }
 }

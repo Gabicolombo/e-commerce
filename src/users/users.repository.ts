@@ -14,6 +14,10 @@ export class UserRepository {
     return this.userModel.findOne({ email: email });
   }
 
+  async getUser(email: string, password: string): Promise<boolean> {
+    return this.userModel.findOne({ email: email, password: password });
+  }
+
   async createUser(user: User): Promise<typeof UserSchema> {
     return await this.userModel.create(user);
   }
