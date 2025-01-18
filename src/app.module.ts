@@ -3,6 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as dotenv from 'dotenv';
+import { ProductsModule } from './products/products.module';
+import { JwtService } from '@nestjs/jwt';
 dotenv.config();
 
 @Module({
@@ -18,7 +20,8 @@ dotenv.config();
       inject: [ConfigService],
     }),
     UsersModule,
+    ProductsModule,
   ],
-  providers: [UsersModule],
+  providers: [JwtService],
 })
 export class AppModule {}
