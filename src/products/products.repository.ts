@@ -15,8 +15,8 @@ export class ProductRepository {
     return await this.productModel.create(product);
   }
 
-  async getProduct(productId: ObjectId): Promise<typeof ProductSchema> {
-    return await this.productModel.findById(productId);
+  async getProduct(productId: string): Promise<typeof ProductSchema> {
+    return await this.productModel.findOne({ _id: productId });
   }
 
   async getProducts(): Promise<(typeof ProductSchema)[]> {

@@ -16,6 +16,10 @@ export class ProductService {
     return this.productRepo.getProducts();
   }
 
+  async getProduct(productId: string): Promise<typeof ProductSchema> {
+    return this.productRepo.getProduct(productId);
+  }
+
   async updateQuantity(
     productId: ObjectId,
     newQuantity: number,

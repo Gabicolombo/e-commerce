@@ -1,4 +1,12 @@
-import { Controller, Post, Body, UseGuards, Req, Get } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  UseGuards,
+  Req,
+  Get,
+  Param,
+} from '@nestjs/common';
 import { ProductService } from './products.service';
 import { Product } from './products.dto';
 import { ProductSchema } from './products.schema';
@@ -13,6 +21,14 @@ export class ProductsController {
   @Get('/getAll')
   async getAll(): Promise<(typeof ProductSchema)[]> {
     return this.productService.getProducts();
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('/:productId')
+  async getProduct(
+    @Param('productId') productId: string,
+  ): Promise<typeof ProductSchema> {
+    return this.productService.getProduct(productId);
   }
 
   @UseGuards(AuthGuard)
