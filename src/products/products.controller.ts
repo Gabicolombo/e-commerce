@@ -15,7 +15,7 @@ export class ProductsController {
     @Body() newProduct: Product,
     @Req() req: Request,
   ): Promise<typeof ProductSchema | false> {
-    console.log(req.user);
+    
     if ('admin' in req.user && req.user['admin'])
       return this.productService.create(newProduct);
     return false;
