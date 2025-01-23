@@ -19,6 +19,10 @@ export class ProductRepository {
     return await this.productModel.findById(productId);
   }
 
+  async getProducts(): Promise<(typeof ProductSchema)[]> {
+    return await this.productModel.find({});
+  }
+
   async updateProduct(
     productId: ObjectId,
     quantity: number,
