@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as dotenv from 'dotenv';
 import { ProductsModule } from './products/products.module';
 import { JwtService } from '@nestjs/jwt';
+import { CartModule } from './cart/cart.module';
 dotenv.config();
 
 @Module({
@@ -21,6 +22,7 @@ dotenv.config();
     }),
     UsersModule,
     ProductsModule,
+    CartModule,
   ],
   providers: [JwtService],
 })
