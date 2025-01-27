@@ -6,12 +6,14 @@ import { JwtModule } from '@nestjs/jwt';
 import { CartController } from './cart.controller';
 import { CartRepository } from './cart.repository';
 import { CartService } from './cart.service';
+import { ProductsModule } from 'src/products/products.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: 'Cart', schema: CartSchema }]),
     AuthModule,
     JwtModule,
+    ProductsModule,
   ],
   controllers: [CartController],
   providers: [CartRepository, CartService],

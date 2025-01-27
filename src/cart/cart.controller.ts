@@ -14,7 +14,7 @@ export class CartController {
   async addCart(
     @Body() payload: Cart,
     @Req() req: Request,
-  ): Promise<typeof CartSchema | boolean> {
+  ): Promise<typeof CartSchema | boolean | string> {
     try {
       const existCart = await this.cartService.cartExist(req.user['email']);
       payload.userId = req.user['email'];
@@ -25,8 +25,8 @@ export class CartController {
         return await this.cartService.addItems(payload);
       }
     } catch (err) {
-      console.log(err);
-      return false;
+      console.error(err);
+      return `Error: ${err.message}`;
     }
   }
 }
